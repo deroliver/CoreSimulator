@@ -15,13 +15,13 @@ public:
 
     SchedulingAlgorithm();
 
-    Process* GetNextProcess() = 0;
-    void AddNewProcess() = 0;
-    void MoveFromWaitingToReady() = 0;
-    void MoveFromReadyToRunning() = 0;
-    void MoveFromRunningToWaiting() = 0;
-    void UpdateProcessState() = 0;
-    void Run(std::vector<Core> cores, std::string filename) = 0;
+    virtual Process* GetNextProcess() = 0;
+    virtual void AddNewProcess() = 0;
+    virtual void MoveFromWaitingToReady() = 0;
+    virtual void MoveFromReadyToRunning() = 0;
+    virtual void MoveFromRunningToWaiting() = 0;
+    virtual void UpdateProcessState() = 0;
+    virtual void Run(std::vector<Core> cores, std::string filename) = 0;
 
     int NumberOfIncomingProcesses();
     int ArrivalTimeCompare(Process* P1, Process* P2);
@@ -48,10 +48,9 @@ private:
     int m_TotalWaitingTime;
     int m_TotalResponseTime;
     int m_TotalTurnaroundTime;
-    int m_CPUUtilizationTicks
+    int m_CPUUtilizationTicks;
 
-
-}
+};
 
 }
 
